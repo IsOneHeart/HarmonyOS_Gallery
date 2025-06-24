@@ -6,9 +6,7 @@ DevEco Studio is the official Integrated Development Environment (IDE) for Harmo
 
 Download Links:
 
-【ZH】https://developer.huawei.com/consumer/cn/download/
-
-【EN】https://developer.huawei.com/consumer/en/download/deveco-studio
+https://developer.huawei.com/consumer/en/download/deveco-studio
 
 ![](image/0201.png)
 
@@ -16,9 +14,7 @@ Select the appropriate version for your operating system (Windows/macOS) and pre
 
 For detailed installation and SDK configuration steps, refer to:
 
-【ZH】https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-software-install
-
-【EN】https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install
+https://developer.huawei.com/consumer/en/doc/harmonyos-guides/ide-software-install
 
 # Create Hello World Project
 
