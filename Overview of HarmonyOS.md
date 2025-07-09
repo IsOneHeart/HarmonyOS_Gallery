@@ -14,7 +14,7 @@ HarmonyOS applications fully leverage distributed technology to enable seamless 
 
 
 For example, through distributed capabilities, files can be accessed across different devices.
-'''arkts
+```arkts
 import { fileIo as fs } from '@kit.CoreFileKit';
 import { common } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -30,14 +30,14 @@ try {
   let err: BusinessError = error as BusinessError;
   console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
 } 
-'''
+```
 
 ### Multi-Device Support
 
 Unlike traditional applications that require device-specific development, HarmonyOS natively supports various device types including smartphones, tablets, TVs, and wearables. Developers can achieve cross-device adaptation and operation through a single development effort, greatly enhancing efficiency.
 
 In the module.json file, you can declare the permitted device types for the application, enabling "develop once, deploy across multiple platforms/segments."
-'''
+```
 {
   "module": {
     "name": "entry",
@@ -51,7 +51,7 @@ In the module.json file, you can declare the permitted device types for the appl
     ]
   }
 }
-'''
+```
 
 ### Unified Development Environment
 
@@ -70,6 +70,27 @@ HarmonyOS applications support seamless multi-scenario switching, delivering per
 ### Enhanced Security
 
 HarmonyOS implements strict security controls including permission management, data encryption, and security auditing to protect user data privacy and system security.
+
+```
+{
+  "module": {
+    // ...
+    "requestPermissions": [
+      {
+        "name": "ohos.permission.VIBRATE",
+        "reason": "$string:vibrate_reason",
+        "usedScene": {
+          "abilities": [
+            "EntryAbility"
+          ],
+          "when": "always"
+        }
+      }
+    ]
+  }
+}
+
+```
 
 ## Application Types
 
