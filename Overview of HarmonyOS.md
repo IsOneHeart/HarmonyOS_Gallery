@@ -12,9 +12,46 @@ This documentation series serves as your guide and curriculum for HarmonyOS appl
 
 HarmonyOS applications fully leverage distributed technology to enable seamless cross-device collaboration. This means applications can operate beyond individual devices, sharing data, functions, and interfaces across multiple devices to deliver continuous and consistent user experiences.
 
+
+For example, through distributed capabilities, files can be accessed across different devices.
+'''arkts
+import { fileIo as fs } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+let context = this.getUIContext().getHostContext() as common.UIAbilityContext; 
+let pathDir: string = context.distributedFilesDir;
+let filePath: string = pathDir + '/test.txt';
+try {
+  let file = fs.openSync(filePath, fs.OpenMode.READ_WRITE | fs.OpenMode.CREATE);
+  console.info('Succeeded in creating.');
+  fs.writeSync(file.fd, 'content');
+  fs.closeSync(file.fd);
+} catch (error) {
+  let err: BusinessError = error as BusinessError;
+  console.error(`Failed to openSync / writeSync / closeSync. Code: ${err.code}, message: ${err.message}`);
+} 
+'''
+
 ### Multi-Device Support
 
 Unlike traditional applications that require device-specific development, HarmonyOS natively supports various device types including smartphones, tablets, TVs, and wearables. Developers can achieve cross-device adaptation and operation through a single development effort, greatly enhancing efficiency.
+
+In the module.json file, you can declare the permitted device types for the application, enabling "develop once, deploy across multiple platforms/segments."
+'''
+{
+  "module": {
+    "name": "entry",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "EntryAbility",
+    "deviceTypes": [
+      "phone",
+      "tablet",
+      "2in1"
+    ]
+  }
+}
+'''
 
 ### Unified Development Environment
 
