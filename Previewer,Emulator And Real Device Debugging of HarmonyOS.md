@@ -14,6 +14,33 @@ As a lightweight debugging tool, the Previewer enables real-time synchronization
 - **Responsive Layout Verification**: Supports switching between phone/tablet/foldable devices with automatic screen size adaptation
 - **Dynamic Effect Preview**: Real-time animation transitions for components marked with `@Preview` decorator
 
+Custom components decorated with the @Preview annotation can be rendered in real-time within the DevEco Studio previewer. When the page is loaded, the custom component decorated with @Preview will be instantiated and displayed. The @Entry annotation is used to designate the entry component of the current page; it can only be applied to child components decorated with @Component, and a single file can contain at most one @Entry annotation.
+
+```arkts
+@Entry  // can preview
+@Component
+struct A{
+   build(){
+       // ...
+  }
+}
+
+@Component  // can not preview
+struct B{
+   build(){
+       // ...
+  }
+}
+
+@Preview  // can preview
+@Component
+struct A{
+   build(){
+       // ...
+  }
+}
+```
+
 #### Bidirectional Modification
 Right-click components in the preview interface to modify layout properties (e.g., padding/margin values), with changes automatically synchronized back to the codebase
 
@@ -53,4 +80,4 @@ Real device testing remains the gold standard for final validation.
 3. Register device IP/port in DevEco Studio: `Tools > IP Connection`
 4. Select the wireless device from the device manager to start debugging
 
-Note: View device IP/port information in `Developer Options > Wireless Debugging` settings.
+Note: View device IP/port information in `Developer Options > Wireless Debugging` settings. When debugging an application on a real device, the app must be automatically or manually signed (using a debug certificate; a formal certificate is only used for release versions).
